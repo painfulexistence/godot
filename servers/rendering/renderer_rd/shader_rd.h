@@ -67,6 +67,8 @@ private:
 		CharString vertex_globals;
 		CharString compute_globals;
 		CharString fragment_globals;
+		CharString tesscontrol_globals;
+		CharString tesseval_globals;
 		HashMap<StringName, CharString> code_sections;
 		Vector<CharString> custom_defines;
 
@@ -102,6 +104,8 @@ private:
 				TYPE_VERTEX_GLOBALS,
 				TYPE_FRAGMENT_GLOBALS,
 				TYPE_COMPUTE_GLOBALS,
+				TYPE_TESSCONTROL_GLOBALS,
+				TYPE_TESSEVAL_GLOBALS,
 				TYPE_CODE,
 				TYPE_TEXT
 			};
@@ -132,6 +136,8 @@ private:
 	enum StageType {
 		STAGE_TYPE_VERTEX,
 		STAGE_TYPE_FRAGMENT,
+		STAGE_TYPE_TESSCONTROL,
+		STAGE_TYPE_TESSEVAL,
 		STAGE_TYPE_COMPUTE,
 		STAGE_TYPE_MAX,
 	};
@@ -150,12 +156,12 @@ private:
 
 protected:
 	ShaderRD();
-	void setup(const char *p_vertex_code, const char *p_fragment_code, const char *p_compute_code, const char *p_name);
+	void setup(const char *p_vertex_code, const char *p_fragment_code, const char *p_tesscontrol_code, const char *p_tesseval_code, const char *p_compute_code, const char *p_name);
 
 public:
 	RID version_create();
 
-	void version_set_code(RID p_version, const HashMap<String, String> &p_code, const String &p_uniforms, const String &p_vertex_globals, const String &p_fragment_globals, const Vector<String> &p_custom_defines);
+	void version_set_code(RID p_version, const HashMap<String, String> &p_code, const String &p_uniforms, const String &p_vertex_globals, const String &p_fragment_globals, const String &p_tesscontrol_globals, const String &p_tesseval_globals, const Vector<String> &p_custom_defines);
 	void version_set_compute_code(RID p_version, const HashMap<String, String> &p_code, const String &p_uniforms, const String &p_compute_globals, const Vector<String> &p_custom_defines);
 
 	_FORCE_INLINE_ RID version_get_shader(RID p_version, int p_variant) {

@@ -718,6 +718,7 @@ String ShaderCompiler::_dump_node_code(const SL::Node *p_node, int p_level, Gene
 				}
 				r_gen_code.stage_globals[STAGE_VERTEX] += interp_mode + "out " + vcode;
 				r_gen_code.stage_globals[STAGE_FRAGMENT] += interp_mode + "in " + vcode;
+				//TODO
 
 				index += inc;
 			}

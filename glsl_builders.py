@@ -128,13 +128,13 @@ def build_rd_header(
     if header_data.compute_lines:
         body_parts = [
             "static const char _compute_code[] = {\n%s\n\t\t};" % generate_inline_code(header_data.compute_lines),
-            f'setup(nullptr, nullptr, _compute_code, "{out_file_class}");',
+            f'setup(nullptr, nullptr, nullptr, nullptr, _compute_code, "{out_file_class}");',
         ]
     else:
         body_parts = [
             "static const char _vertex_code[] = {\n%s\n\t\t};" % generate_inline_code(header_data.vertex_lines),
             "static const char _fragment_code[] = {\n%s\n\t\t};" % generate_inline_code(header_data.fragment_lines),
-            f'setup(_vertex_code, _fragment_code, nullptr, "{out_file_class}");',
+            f'setup(_vertex_code, _fragment_code, nullptr, nullptr, nullptr, "{out_file_class}");',
         ]
 
     body_content = "\n\t\t".join(body_parts)

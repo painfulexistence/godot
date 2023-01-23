@@ -346,10 +346,14 @@ public:
 		StringName fragment;
 		StringName vertex;
 		StringName light;
+		StringName tesscontrol;
+		StringName tesseval;
 		VaryingFunctionNames() {
 			fragment = "fragment";
 			vertex = "vertex";
 			light = "light";
+			tesscontrol = "tesselation_control";
+			tesseval = "tesselation_evaluation";
 		}
 	};
 
@@ -643,6 +647,8 @@ public:
 				STAGE_FRAGMENT, // transition stage to STAGE_FRAGMENT_TO_LIGHT, emits warning if it's not used
 				STAGE_VERTEX_TO_FRAGMENT_LIGHT,
 				STAGE_FRAGMENT_TO_LIGHT,
+				STAGE_TESSELLATION_CONTROL,
+				STAGE_TESSELLATION_EVALUATION,
 			};
 
 			Stage stage = STAGE_UNKNOWN;
